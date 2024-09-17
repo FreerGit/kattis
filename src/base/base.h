@@ -27,4 +27,8 @@ typedef bool Bool;
 #define GB(x) (((U64)(x)) << 30)
 #define TB(x) (((U64)(x)) << 40)
 
+// Clamps, min, max
+#define Min(A, B) (((A) < (B)) ? (A) : (B))
+#define Max(A, B) (((A) > (B)) ? (A) : (B))
+
 #endif // BASE_H

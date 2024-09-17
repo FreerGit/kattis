@@ -29,15 +29,13 @@
       "-Xclang",
       "-flto-visibility-public-std",
       "-D_USE_MATH_DEFINES",
-      "-Dstrdup=_strdup",
-      "-Dgnu_printf=printf",
       "-o",
-      "nasty_hack",
-      "src/nasty_hack.c"
+      "event_planning",
+      "src/event_planning.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/nasty_hack.c",
-    "output": "/home/a7/dev/kattis/nasty_hack"
+    "file": "/home/a7/dev/kattis/src/event_planning.c",
+    "output": "/home/a7/dev/kattis/event_planning"
   },
   {
     "arguments": [
@@ -48,7 +46,7 @@
       "-emit-obj",
       "-mrelax-all",
       "-dumpdir",
-      "nasty_hack-",
+      "event_planning-",
       "-disable-free",
       "-clear-ast-before-backend",
       "-disable-llvm-verifier",
@@ -82,10 +80,6 @@
       "src/",
       "-D",
       "_USE_MATH_DEFINES",
-      "-D",
-      "strdup=_strdup",
-      "-D",
-      "gnu_printf=printf",
       "-internal-isystem",
       "/usr/lib/llvm-18/lib/clang/18/include",
       "-internal-isystem",
@@ -128,11 +122,11 @@
       "-x",
       "c",
       "-o",
-      "/tmp/nasty_hack-91236e.o",
-      "src/nasty_hack.c"
+      "/tmp/event_planning-69339e.o",
+      "src/event_planning.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/nasty_hack.c",
-    "output": "/tmp/nasty_hack-91236e.o"
+    "file": "/home/a7/dev/kattis/src/event_planning.c",
+    "output": "/tmp/event_planning-69339e.o"
   }
 ]
