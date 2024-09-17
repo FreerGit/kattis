@@ -30,12 +30,12 @@
       "-flto-visibility-public-std",
       "-D_USE_MATH_DEFINES",
       "-o",
-      "event_planning",
-      "src/event_planning.c"
+      "a_different_problem",
+      "src/a_different_problem.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/event_planning.c",
-    "output": "/home/a7/dev/kattis/event_planning"
+    "file": "/home/a7/dev/kattis/src/a_different_problem.c",
+    "output": "/home/a7/dev/kattis/a_different_problem"
   },
   {
     "arguments": [
@@ -46,7 +46,7 @@
       "-emit-obj",
       "-mrelax-all",
       "-dumpdir",
-      "event_planning-",
+      "a_different_problem-",
       "-disable-free",
       "-clear-ast-before-backend",
       "-disable-llvm-verifier",
@@ -122,11 +122,11 @@
       "-x",
       "c",
       "-o",
-      "/tmp/event_planning-69339e.o",
-      "src/event_planning.c"
+      "/tmp/a_different_problem-a305d7.o",
+      "src/a_different_problem.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/event_planning.c",
-    "output": "/tmp/event_planning-69339e.o"
+    "file": "/home/a7/dev/kattis/src/a_different_problem.c",
+    "output": "/tmp/a_different_problem-a305d7.o"
   }
 ]
