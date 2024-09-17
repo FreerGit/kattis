@@ -1,0 +1,17 @@
+{
+	"Include Headers and Main Function": {
+		"prefix": "include_main", // Trigger text for the snippet
+		"body": [
+			"#include <stdio.h>",
+			"#include <stdlib.h>",
+			"#include <base/base.h>",
+			"#include <base/base_testlib.h>",
+			"",
+			"S32 main() {",
+			"    // Your code here",
+			"    return 0;",
+			"}"
+		],
+		"description": "Inserts includes and a main function template"
+	}
+}
