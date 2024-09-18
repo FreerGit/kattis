@@ -30,12 +30,12 @@
       "-flto-visibility-public-std",
       "-D_USE_MATH_DEFINES",
       "-o",
-      "a_different_problem",
-      "src/a_different_problem.c"
+      "aaa",
+      "src/aaa.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/a_different_problem.c",
-    "output": "/home/a7/dev/kattis/a_different_problem"
+    "file": "/home/a7/dev/kattis/src/aaa.c",
+    "output": "/home/a7/dev/kattis/aaa"
   },
   {
     "arguments": [
@@ -46,7 +46,7 @@
       "-emit-obj",
       "-mrelax-all",
       "-dumpdir",
-      "a_different_problem-",
+      "aaa-",
       "-disable-free",
       "-clear-ast-before-backend",
       "-disable-llvm-verifier",
@@ -122,11 +122,11 @@
       "-x",
       "c",
       "-o",
-      "/tmp/a_different_problem-a305d7.o",
-      "src/a_different_problem.c"
+      "/tmp/aaa-a6f535.o",
+      "src/aaa.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/a_different_problem.c",
-    "output": "/tmp/a_different_problem-a305d7.o"
+    "file": "/home/a7/dev/kattis/src/aaa.c",
+    "output": "/tmp/aaa-a6f535.o"
   }
 ]
