@@ -122,11 +122,11 @@
       "-x",
       "c",
       "-o",
-      "/tmp/aaa-f3e057.o",
+      "/tmp/aaa-611d2a.o",
       "src/aaa.c"
     ],
     "directory": "/home/a7/dev/kattis",
     "file": "/home/a7/dev/kattis/src/aaa.c",
-    "output": "/tmp/aaa-f3e057.o"
+    "output": "/tmp/aaa-611d2a.o"
   }
 ]
