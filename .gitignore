@@ -54,3 +54,4 @@ dkms.conf
 # From workflow
 build/*
 .cache
+compile_commands.json
