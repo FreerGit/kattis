@@ -4,8 +4,8 @@
 		"body": [
 			"#include <stdio.h>",
 			"#include <stdlib.h>",
-			"#include <base/base.h>",
-			"#include <base/base_testlib.h>",
+			"#include \"base/base.h\"",
+			"#include \"base/base_testlib.h\"",
 			"",
 			"S32 main() {",
 			"    // Your code here",

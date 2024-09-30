@@ -30,12 +30,12 @@
       "-flto-visibility-public-std",
       "-D_USE_MATH_DEFINES",
       "-o",
-      "aaa",
-      "src/aaa.c"
+      "main",
+      "c/main.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/aaa.c",
-    "output": "/home/a7/dev/kattis/aaa"
+    "file": "/home/a7/dev/kattis/c/main.c",
+    "output": "/home/a7/dev/kattis/main"
   },
   {
     "arguments": [
@@ -46,7 +46,7 @@
       "-emit-obj",
       "-mrelax-all",
       "-dumpdir",
-      "aaa-",
+      "main-",
       "-disable-free",
       "-clear-ast-before-backend",
       "-disable-llvm-verifier",
@@ -122,11 +122,11 @@
       "-x",
       "c",
       "-o",
-      "/tmp/aaa-611d2a.o",
-      "src/aaa.c"
+      "/tmp/main-e02245.o",
+      "c/main.c"
     ],
     "directory": "/home/a7/dev/kattis",
-    "file": "/home/a7/dev/kattis/src/aaa.c",
-    "output": "/tmp/aaa-611d2a.o"
+    "file": "/home/a7/dev/kattis/c/main.c",
+    "output": "/tmp/main-e02245.o"
   }
 ]
