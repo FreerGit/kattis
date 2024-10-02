@@ -1,5 +1,3 @@
-import math
-
 c,r =map(int, input().split())
 
 squares = []
@@ -19,5 +17,6 @@ for i in range(r):
             if not tile.__contains__('#'):
                 cars[tile.count('X')] += 1
             tile = []
+
 for k in cars.values():
     print(k)
