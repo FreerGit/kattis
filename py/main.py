@@ -1,10 +1,5 @@
-c = input()
+from collections import defaultdict
 
-vowels = ['a','e','i','o','u']
-
-if vowels.__contains__(c.lower()):
-    print("Jebb")
-elif c.lower() == 'y':
-    print("Kannski")
-else:
-    print("Neibb")
+_ = input()
+ranges = list(map(int, input().split()))
+print(max(ranges), min(ranges))
