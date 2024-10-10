@@ -1,4 +1,4 @@
 (executable
  (public_name kattis)
  (name main)
- (libraries))
+ (libraries core_bench))

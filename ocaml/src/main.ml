@@ -1,32 +1,23 @@
 open! Stdlib
-module Guests = Map.Make (Int)
-
-let update k =
-  match k with
-  | None -> Some 1
-  | Some value -> Some (value + 1)
-;;
 
 let () =
-  let idx = ref 1 in
-  let n = read_int () in
-  for _ = 1 to n do
-    let m = ref Guests.empty in
-    let _ = read_int () in
-    let line = read_line () in
-    let numbers = String.split_on_char ' ' line in
-    List.iter
-      (fun g ->
-        let guest = int_of_string g in
-        m := Guests.update guest update !m)
-      numbers;
-    Guests.iter
-      (fun key value ->
-        match value with
-        | 1 ->
-          Printf.printf "Case #%d: %d\n" !idx key;
-          idx := !idx + 1
-        | _ -> ())
-      !m
-  done
+  Scanf.scanf "%d %d %d" (fun x y n ->
+    for i = 1 to n do
+      match i with
+      | i when i mod x == 0 && i mod y == 0 -> print_endline "FizzBuzz"
+      | i when i mod x == 0 -> print_endline "Fizz"
+      | i when i mod y == 0 -> print_endline "Buzz"
+      | i -> Printf.printf "%d\n" i
+    done)
 ;;
+
+(* open Core_bench *)
+(*
+   let () =
+   let test_string =
+   "TTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGGTTCCGG"
+   in
+   let bench_v1 = Bench.Test.create ~name:"abc" (fun () -> ignore (abc test_string)) in
+   let bench_v2 = Bench.Test.create ~name:"abcd" (fun () -> ignore (abcd test_string)) in
+   Bench.make_command [ bench_v1; bench_v2 ] |> Command_unix.run
+   ;; *)
