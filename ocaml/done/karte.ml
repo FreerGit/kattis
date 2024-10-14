@@ -1,5 +1,8 @@
 open! Stdlib
 
+(* Ughh... Kattis uses 4.14 which requires
+   the type to have the hash function implemented *)
+
 module StringHash = struct
   type t = string
 

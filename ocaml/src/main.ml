@@ -1,15 +1,30 @@
 open! Stdlib
 
+module StringHash = struct
+  type t = string
+
+  let equal = String.equal
+  let hash = Hashtbl.hash
+end
+
+module Card = Hashtbl.Make (StringHash)
+
 let () =
-  Scanf.scanf "%d %d %d" (fun x y n ->
-    for i = 1 to n do
-      match i with
-      | i when i mod x == 0 && i mod y == 0 -> print_endline "FizzBuzz"
-      | i when i mod x == 0 -> print_endline "Fizz"
-      | i when i mod y == 0 -> print_endline "Buzz"
-      | i -> Printf.printf "%d\n" i
-    done)
+  let sets = read_line () |> int_of_string in
+  for _i = 1 to sets do
+    Scanf.scanf "%d %d\n" (fun k n ->
+      let s1 = n * (n + 1) / 2 in
+      let s2 = n * n in
+      let s3 = n * (n + 1) in
+      Printf.printf "%d %d %d %d \n" k s1 s2 s3)
+  done
 ;;
+
+(* let emma = read_line () |> sum_dice in
+   match compare gunnar emma with
+   | 0 -> print_endline "Tie"
+   | 1 -> print_endline "Gunnar"
+   | _ -> print_endline "Emma" *)
 
 (* open Core_bench *)
 (*
