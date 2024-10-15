@@ -1,23 +1,38 @@
 open! Stdlib
 
-module StringHash = struct
-  type t = string
+(* module StringHash = struct
+   type t = string
 
-  let equal = String.equal
-  let hash = Hashtbl.hash
-end
+   let equal = String.equal
+   let hash = Hashtbl.hash
+   end *)
 
-module Card = Hashtbl.Make (StringHash)
+(* module Card = Hashtbl.Make (StringHash) *)
+
+module IntSet = Set.Make (struct
+    type t = int
+
+    let compare = compare
+  end)
+
+let potential_comb comb =
+  let str = string_of_int comb in
+  let digits =
+    List.init (String.length str) (fun i -> int_of_char str.[i] - int_of_char '0')
+  in
+  let set = IntSet.of_list digits in
+  (not @@ IntSet.mem 0 set)
+  && IntSet.cardinal set == List.length digits
+  && List.for_all (fun i -> comb mod i == 0) digits
+;;
 
 let () =
-  let sets = read_line () |> int_of_string in
-  for _i = 1 to sets do
-    Scanf.scanf "%d %d\n" (fun k n ->
-      let s1 = n * (n + 1) / 2 in
-      let s2 = n * n in
-      let s3 = n * (n + 1) in
-      Printf.printf "%d %d %d %d \n" k s1 s2 s3)
-  done
+  let tot = ref 0 in
+  Scanf.scanf "%d %d\n" (fun low high ->
+    for i = low to high do
+      if potential_comb i then tot := !tot + 1
+    done);
+  Printf.printf "%d\n" !tot
 ;;
 
 (* let emma = read_line () |> sum_dice in
