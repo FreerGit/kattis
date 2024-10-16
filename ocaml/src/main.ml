@@ -15,24 +15,17 @@ module IntSet = Set.Make (struct
     let compare = compare
   end)
 
-let potential_comb comb =
-  let str = string_of_int comb in
-  let digits =
-    List.init (String.length str) (fun i -> int_of_char str.[i] - int_of_char '0')
-  in
-  let set = IntSet.of_list digits in
-  (not @@ IntSet.mem 0 set)
-  && IntSet.cardinal set == List.length digits
-  && List.for_all (fun i -> comb mod i == 0) digits
-;;
-
 let () =
-  let tot = ref 0 in
-  Scanf.scanf "%d %d\n" (fun low high ->
-    for i = low to high do
-      if potential_comb i then tot := !tot + 1
-    done);
-  Printf.printf "%d\n" !tot
+  Scanf.scanf "%d\n" (fun n ->
+    (* let day = ref 0 in *)
+    let days = ref IntSet.empty in
+    for _i = 0 to n - 1 do
+      Scanf.scanf "%d %d\n" (fun a b ->
+        for l = a to b do
+          days := IntSet.add l !days
+        done)
+    done;
+    Printf.printf "%d\n" @@ IntSet.cardinal !days)
 ;;
 
 (* let emma = read_line () |> sum_dice in
@@ -51,3 +44,5 @@ let () =
    let bench_v2 = Bench.Test.create ~name:"abcd" (fun () -> ignore (abcd test_string)) in
    Bench.make_command [ bench_v1; bench_v2 ] |> Command_unix.run
    ;; *)
+
+(* 4 4 1 *)
