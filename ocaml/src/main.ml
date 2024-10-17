@@ -9,24 +9,33 @@ open! Stdlib
 
 (* module Card = Hashtbl.Make (StringHash) *)
 
-module IntSet = Set.Make (struct
-    type t = int
+module CharSet = Set.Make (struct
+    type t = char
 
     let compare = compare
   end)
 
 let () =
-  Scanf.scanf "%d\n" (fun n ->
-    (* let day = ref 0 in *)
-    let days = ref IntSet.empty in
-    for _i = 0 to n - 1 do
-      Scanf.scanf "%d %d\n" (fun a b ->
-        for l = a to b do
-          days := IntSet.add l !days
-        done)
-    done;
-    Printf.printf "%d\n" @@ IntSet.cardinal !days)
+  let word, guesses = Scanf.scanf "%s\n%s\n" (fun word g -> word, g) in
+  let word_set = CharSet.of_seq (String.to_seq word) in
+  let rec play_game guesses incorrect_guesses guessed_set =
+    if incorrect_guesses >= 10
+    then "LOSE"
+    else if CharSet.equal guessed_set word_set
+    then "WIN"
+    else (
+      match guesses with
+      | [] -> "LOSE"
+      | guess :: rest ->
+        if CharSet.mem guess word_set
+        then play_game rest incorrect_guesses (CharSet.add guess guessed_set)
+        else play_game rest (incorrect_guesses + 1) guessed_set)
+  in
+  let result = play_game (List.of_seq (String.to_seq guesses)) 0 CharSet.empty in
+  print_endline result
 ;;
+
+(* Printf.printf " %d\n" (CharSet.cardinal word_set) *)
 
 (* let emma = read_line () |> sum_dice in
    match compare gunnar emma with
