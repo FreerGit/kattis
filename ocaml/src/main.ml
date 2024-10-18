@@ -15,31 +15,22 @@ open! Stdlib
    let compare = compare
    end) *)
 
-let is_sub str comp =
-  let len = String.length comp in
-  if str = comp
-  then true
-  else if String.length str < len
-  then false
-  else (
-    let t = ref false in
-    for i = 0 to String.length str - len do
-      if String.sub str i len = comp then t := true
+let () =
+  let n = read_line () |> int_of_string in
+  for _ = 1 to n do
+    let tot = ref 0 in
+    let k =
+      let line = read_line () in
+      Array.of_list (List.map int_of_string (String.split_on_char ' ' line))
+    in
+    for i = 1 to k.(0) do
+      tot := !tot + k.(i) - 1
     done;
-    !t)
+    tot := !tot + 1;
+    Printf.printf "%d\n" !tot
+  done
 ;;
 
-let () =
-  let n = int_of_string @@ read_line () in
-  let tot = ref 0 in
-  for _ = 1 to n do
-    let str = Scanf.scanf "%s\n" (fun s -> String.lowercase_ascii s) in
-    if is_sub str "pink" || is_sub str "rose" then tot := !tot + 1
-  done;
-  if !tot > 0
-  then Printf.printf "%d\n" !tot
-  else print_endline "I must watch Star Wars with my daughter"
-;;
 (* Printf.printf "%d %d \n" !a !b *)
 
 (* Printf.printf " %d\n" (CharSet.cardinal word_set) *)
