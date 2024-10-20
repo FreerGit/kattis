@@ -16,9 +16,19 @@ open! Stdlib
    end) *)
 
 let () =
-  let a, b = Scanf.scanf "%d %d\n" (fun a b -> a, b) in
-  let rec gcd a b = if b = 0 then a else gcd b (a mod b) in
-  Printf.printf "%d\n" (gcd a b)
+  let abc = Scanf.scanf "%d %d %d\n" (fun i1 i2 i3 -> [| i1; i2; i3 |]) in
+  Array.sort compare abc;
+  let s = Scanf.scanf "%s\n" (fun s -> s) in
+  String.iter
+    (fun c ->
+      (match c with
+       | 'A' -> Printf.fprintf stdout "%d" abc.(0)
+       | 'B' -> Printf.fprintf stdout "%d" abc.(1)
+       | 'C' -> Printf.fprintf stdout "%d" abc.(2)
+       | _ -> failwith "???");
+      Printf.fprintf stdout (if c == s.[2] then "\n" else " "))
+    s;
+  flush stdout
 ;;
 
 (* Printf.printf "%d %d \n" !a !b *)
