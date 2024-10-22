@@ -1,43 +1,29 @@
 open! Stdlib
 
-module StringHash = struct
-  type t = string
+type t =
+  | Ineligable
+  | Eligable
+  | Coach
 
-  let equal = String.equal
-  let hash = Hashtbl.hash
-end
-
-module Votes = Hashtbl.Make (StringHash)
-
-(* module CharSet = Set.Make (struct
-   type t = char
-
-   let compare = compare
-   end) *)
+let is_eligable p born courses =
+  let post_yr_2010 = String.split_on_char '/' p |> List.hd |> int_of_string in
+  let age = String.split_on_char '/' born |> List.hd |> int_of_string in
+  match post_yr_2010 >= 2010 || age >= 1991 with
+  | true -> Eligable
+  | false -> if courses > 40 then Ineligable else Coach
+;;
 
 let () =
-  let is_vote = ref true in
-  let votes = Hashtbl.create 100_000 in
-  while !is_vote do
-    let nominee = read_line () in
-    if String.equal nominee "***"
-    then is_vote := false
-    else (
-      match Hashtbl.find_opt votes nominee with
-      | None -> Hashtbl.add votes nominee 1
-      | Some v -> Hashtbl.replace votes nominee (v + 1))
-  done;
-  let filter_highest_votes votes =
-    let max_vote = ref 0 in
-    Hashtbl.iter (fun _ count -> if count > !max_vote then max_vote := count) votes;
-    Hashtbl.filter_map_inplace
-      (fun _ count -> if count = !max_vote then Some count else None)
-      votes
-  in
-  filter_highest_votes votes;
-  if Hashtbl.length votes > 1
-  then print_endline "Runoff!"
-  else Hashtbl.iter (fun name _count -> Printf.printf "%s\n" name) votes
+  let t = read_int () in
+  for _ = 1 to t do
+    let name, post_yr, born, courses =
+      Scanf.scanf "%s %s %s %d\n" (fun a b c d -> a, b, c, d)
+    in
+    match is_eligable post_yr born courses with
+    | Ineligable -> Printf.printf "%s ineligible\n" name
+    | Eligable -> Printf.printf "%s eligible\n" name
+    | Coach -> Printf.printf "%s coach petitions\n" name
+  done
 ;;
 
 (* Printf.printf "%d %d \n" !a !b *)
