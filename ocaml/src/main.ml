@@ -1,17 +1,16 @@
 open! Stdlib
 
-let parse_cup () =
-  let a, b = Scanf.scanf " %s %s\n" (fun a b -> a, b) in
-  match int_of_string_opt a with
-  | None -> int_of_string b, a
-  | Some n -> n / 2, b
-;;
+(* let contains secret lst = List.exists (fun card -> card = secret) lst *)
 
 let () =
-  let t = read_line () |> int_of_string in
-  let cups = List.init t (fun _ -> parse_cup ()) in
-  let sorted_cups = List.sort (fun (r1, _) (r2, _) -> compare r1 r2) cups in
-  List.iter (fun (_, color) -> print_endline color) sorted_cups
+  let cases = read_line () |> int_of_string in
+  for _ = 1 to cases do
+    let _ = read_line () in
+    let g = read_line () |> String.split_on_char ' ' |> List.map int_of_string in
+    let low = List.fold_left (fun acc a -> min acc a) max_int g in
+    let high = List.fold_left (fun acc a -> max acc a) 0 g in
+    Printf.printf "%d\n" ((high - low) * 2)
+  done
 ;;
 
 (* Printf.printf "%d %d \n" !a !b *)
