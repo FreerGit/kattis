@@ -1,19 +1,15 @@
 open! Stdlib
 
-let count () =
-  let n = read_line () |> int_of_string in
-  let quotient = n / 400 in
-  let rem = n mod 400 in
-  let res = if rem = 0 then quotient else quotient + 1 in
-  Printf.printf "%d\n" res
+let () =
+  let n, s = Scanf.scanf "%d %d\n" (fun n s -> n, s) in
+  let tot = ref s in
+  for _ = 1 to n do
+    let l, u = Scanf.scanf "%d %d\n" (fun l u -> l, u) in
+    if !tot >= l && !tot <= u then tot := !tot + 1
+  done;
+  Printf.printf "%d\n" !tot
 ;;
 
-let () =
-  let n = read_line () |> int_of_string in
-  for _ = 1 to n do
-    count ()
-  done
-;;
 (* New line after each row *)
 
 (* print_endline "fds" *)
