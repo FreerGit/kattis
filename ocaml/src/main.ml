@@ -1,15 +1,13 @@
 open! Stdlib
 
 let () =
-  let n, s = Scanf.scanf "%d %d\n" (fun n s -> n, s) in
-  let tot = ref s in
+  let n = Scanf.scanf "%d\n" (fun n -> n) in
   for _ = 1 to n do
-    let l, u = Scanf.scanf "%d %d\n" (fun l u -> l, u) in
-    if !tot >= l && !tot <= u then tot := !tot + 1
-  done;
-  Printf.printf "%d\n" !tot
+    let s = Scanf.scanf "%s\n" (fun s -> s) in
+    let ds = String.length s in
+    Printf.printf "%d\n" ds
+  done
 ;;
-
 (* New line after each row *)
 
 (* print_endline "fds" *)
