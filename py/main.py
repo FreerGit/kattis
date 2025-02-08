@@ -1,14 +1,17 @@
-from collections import defaultdict
+# carbon = int(input())
+n,a,b = map(int, input().split())
+
+fizz = 0
+buzz = 0
+fizzbuzz = 0
+
+for i in range(1, n+1):
+    if i % a == 0 and i % b == 0:
+        fizzbuzz += 1
+    elif i % a == 0:
+        fizz += 1
+    elif i % b == 0:
+        buzz += 1
 
 
-# n  = map(int, input().split())
-n = int(input())
-
-print(n * 45, "ml gin")
-print(n * 30, "ml fresh lemon juice")
-print(n * 10, "ml simple syrup")
-if n > 1:
-    print(n, "slices of lemon")
-else:
-    print(n, "slice of lemon")
-
+print(fizz, buzz, fizzbuzz)
