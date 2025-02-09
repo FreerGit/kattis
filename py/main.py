@@ -1,10 +1,18 @@
+import math
+from collections import defaultdict
 
+_ = input()
 
-n = int(input()) 
+nums = map(int, input().split())
 
-for _ in range(n):
-    a,b,c = map(int, input().split())
-    if a + b == c or a - b == c or b - a == c or a * b == c or a / b == c or b / a == c:
-        print("Possible")
-    else:
-        print("Impossible")
+output = []
+
+nums = sorted(nums)
+
+sections = len(nums) // 3
+
+output.extend(nums[sections:sections +sections])
+output.extend(nums[:sections])
+output.extend(nums[sections + sections:])
+
+print(' '.join(map(str, output)))
