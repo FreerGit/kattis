@@ -1,17 +1,10 @@
-# carbon = int(input())
-n,a,b = map(int, input().split())
-
-fizz = 0
-buzz = 0
-fizzbuzz = 0
-
-for i in range(1, n+1):
-    if i % a == 0 and i % b == 0:
-        fizzbuzz += 1
-    elif i % a == 0:
-        fizz += 1
-    elif i % b == 0:
-        buzz += 1
 
 
-print(fizz, buzz, fizzbuzz)
+n = int(input()) 
+
+for _ in range(n):
+    a,b,c = map(int, input().split())
+    if a + b == c or a - b == c or b - a == c or a * b == c or a / b == c or b / a == c:
+        print("Possible")
+    else:
+        print("Impossible")
