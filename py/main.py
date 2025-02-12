@@ -1,18 +1,27 @@
 import math
 from collections import defaultdict
 
-_ = input()
+ns = [input() for _ in range(9)]
+ns = list(map(int, ns))
 
-nums = map(int, input().split())
+def backtrack(ns, id, chosen):
+    if len(chosen) == 7:
+        if sum(chosen) == 100:
+            return chosen
+        return None
 
-output = []
+    if id >= len(ns):
+        return None
 
-nums = sorted(nums)
+    result = backtrack(ns, id + 1, chosen + [ns[id]])
+    if result:
+        return result
+    
+    return backtrack(ns, id + 1, chosen)
 
-sections = len(nums) // 3
 
-output.extend(nums[sections:sections +sections])
-output.extend(nums[:sections])
-output.extend(nums[sections + sections:])
+result = backtrack(ns, 0, [])
 
-print(' '.join(map(str, output)))
+# Print the solution
+for num in result:
+    print(num)
