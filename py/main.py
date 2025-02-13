@@ -1,18 +1,34 @@
 import math
 from collections import defaultdict
 
-_ = input()
+# a,b = map(int, input().split())
 
-nums = map(int, input().split())
+# Read input
+n = int(input()) 
+answers = input()
 
-output = []
+adrian_pattern = "ABC"  
+bruno_pattern = "BABC"  
+goran_pattern = "CCAABB"  
 
-nums = sorted(nums)
+def count_correct(pattern, answers):
+    pattern_length = len(pattern)
+    count = 0 
+    for i in range(len(answers)):
+        if answers[i] == pattern[i % pattern_length]:
+            count += 1
+    return count
 
-sections = len(nums) // 3
+scores = {
+    "Adrian": count_correct(adrian_pattern, answers),
+    "Bruno": count_correct(bruno_pattern, answers),
+    "Goran": count_correct(goran_pattern, answers)
+}
 
-output.extend(nums[sections:sections +sections])
-output.extend(nums[:sections])
-output.extend(nums[sections + sections:])
+max_score = max(scores.values())
 
-print(' '.join(map(str, output)))
+winners = [name for name, score in scores.items() if score == max_score]
+
+print(max_score)
+for winner in sorted(winners): 
+    print(winner)
