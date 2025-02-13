@@ -1,27 +1,20 @@
 import math
 from collections import defaultdict
 
-ns = [input() for _ in range(9)]
-ns = list(map(int, ns))
+ring_count = int(input())
 
-def backtrack(ns, id, chosen):
-    if len(chosen) == 7:
-        if sum(chosen) == 100:
-            return chosen
-        return None
+rings = list(map(int, input().split()))
 
-    if id >= len(ns):
-        return None
+first = rings[0]
 
-    result = backtrack(ns, id + 1, chosen + [ns[id]])
-    if result:
-        return result
-    
-    return backtrack(ns, id + 1, chosen)
+others = rings[1:]
 
 
-result = backtrack(ns, 0, [])
+for r in others:
+    gcd_value = math.gcd(first, r)
+    num = first // gcd_value
+    denom = r // gcd_value
+    print(f"{num}/{denom}")    
 
-# Print the solution
-for num in result:
-    print(num)
+
+
