@@ -1,20 +1,38 @@
 import math
 from collections import defaultdict
+from collections import deque
 
-ring_count = int(input())
+from collections import Counter
 
-rings = list(map(int, input().split()))
+def fib(n):
+    if n < 2:
+        return n
 
-first = rings[0]
+    return fib(n - 1) + fib(n - 2)
 
-others = rings[1:]
+# 0 1 1 2 3 5
+
+def fib_i(n):
+    if n < 2:
+        return n
+
+    a = 0
+    b = 1
+    for _ in range(2, n + 1):
+        res = a + b
+
+        a = b
+        b = res
 
 
-for r in others:
-    gcd_value = math.gcd(first, r)
-    num = first // gcd_value
-    denom = r // gcd_value
-    print(f"{num}/{denom}")    
+    return b
 
-
-
+print(fib(3))
+print(fib(4))
+print(fib(5))
+print(fib(6))
+print(" ")
+print(fib_i(3))
+print(fib_i(4))
+print(fib_i(5))
+print(fib_i(6))
