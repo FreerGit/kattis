@@ -1,0 +1,30 @@
+fn rotate(half: &str) -> String {
+    let v: u64 = half.chars().map(|c| (c as u8 - b'A') as u64).sum();
+    half.chars()
+        .map(|c| {
+            let base = (c as u8 - b'A') as u64;
+            (((base + v) % 26) as u8 + b'A') as char
+        })
+        .collect()
+}
+
+fn merge(first: String, second: String) -> String {
+    first
+        .chars()
+        .zip(second.chars())
+        .map(|(a, b)| {
+            let shift = (b as u8 - b'A') as u64;
+            let base = (a as u8 - b'A') as u64;
+            (((base + shift) % 26) as u8 + b'A') as char
+        })
+        .collect()
+}
+
+fn main() {
+    let mut s = String::new();
+    std::io::stdin().read_line(&mut s).unwrap(); // remove \n
+    s = s.to_string().trim().to_owned();
+    let (first, second) = s.split_at(s.len() / 2);
+
+    println!("{}", merge(rotate(first), rotate(second)));
+}
